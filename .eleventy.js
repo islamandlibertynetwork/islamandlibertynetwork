@@ -18,6 +18,30 @@ module.exports = function(eleventyConfig) {
     return new Date().toISOString();
   });
 
+  // Add the missing resolveMultiReferences filter
+  eleventyConfig.addFilter("resolveMultiReferences", function(references) {
+    // If no references or empty array, return empty array
+    if (!references || !Array.isArray(references) || references.length === 0) {
+      return [];
+    }
+    
+    // For now, return the references as-is
+    // This may need to be customized based on your CMS data structure
+    return references;
+  });
+
+  // Add the missing resolveReference filter (single reference)
+  eleventyConfig.addFilter("resolveReference", function(reference) {
+    // If no reference, return null
+    if (!reference) {
+      return null;
+    }
+    
+    // Return the reference as-is
+    // This may need to be customized based on your CMS data structure
+    return reference;
+  });
+
   // Your existing configuration...
   
   return {
