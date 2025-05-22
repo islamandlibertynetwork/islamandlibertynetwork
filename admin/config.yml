@@ -1,0 +1,1555 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+  branch: master
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Twitter Image
+            name: twitter:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: people
+    label: People
+    folder: cms/people
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_position
+        label: Position
+        widget: string
+        required: false
+      - hint: ''
+        name: f_bio
+        label: Bio
+        widget: text
+        required: false
+      - hint: ''
+        name: f_picture
+        label: Picture
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_email
+        label: Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_category
+        label: Category
+        widget: select
+        required: false
+        options:
+          - label: Council
+            value: Council
+          - label: Management
+            value: Management
+          - label: Fellows
+            value: Fellows
+          - label: Advisors
+            value: Advisors
+      - hint: ''
+        name: f_x-profile-link
+        label: X Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_linkedin-profile-link
+        label: LinkedIn Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_bluesky-profile-link
+        label: BlueSky Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_google-scholar-profile-link
+        label: Google Scholar Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_orcid-profile-link
+        label: ORCID Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_past
+        label: Past
+        widget: boolean
+        required: false
+        default: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: people
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[people].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: partners
+    label: Partners
+    folder: cms/partners
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_logo
+        label: Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_about
+        label: About
+        widget: string
+        required: false
+      - hint: ''
+        name: f_location
+        label: Location
+        widget: string
+        required: false
+      - hint: ''
+        name: f_url
+        label: URL
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: partners
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[partners].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: event_partners
+    label: Event Partners
+    folder: cms/event-partners
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_logo
+        label: Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_about
+        label: About
+        widget: text
+        required: false
+      - hint: ''
+        name: f_url
+        label: URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured
+        widget: boolean
+        required: false
+        default: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: event-partners
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[event-partners].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: sponsors
+    label: Sponsors
+    folder: cms/sponsors
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_logo
+        label: Logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_about
+        label: About
+        widget: text
+        required: false
+      - hint: ''
+        name: f_url
+        label: URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured
+        widget: boolean
+        required: false
+        default: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: sponsors
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[sponsors].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: session
+    label: Sessions
+    folder: cms/session
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Title
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_abstract
+        label: Description
+        widget: text
+        required: false
+      - hint: ''
+        name: f_chair-3
+        label: Chair
+        widget: relation
+        required: false
+        collection: speakers
+        value_field: cms/speakers/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: false
+      - hint: ''
+        name: f_speakers
+        label: Speakers
+        widget: relation
+        required: true
+        collection: speakers
+        value_field: cms/speakers/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_pdf-url
+        label: PDF URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_video-url-2
+        label: Video URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured?
+        widget: boolean
+        required: false
+        default: false
+      - hint: ''
+        name: f_color
+        label: Color
+        widget: color
+        required: false
+        enableAlpha: true
+        allowInput: true
+      - hint: ''
+        name: f_date-time
+        label: Date & TIme
+        widget: datetime
+        required: true
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: session
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[session].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: speakers
+    label: Speakers
+    folder: cms/speakers
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Bio
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_position
+        label: Position
+        widget: string
+        required: true
+      - hint: ''
+        name: f_organization
+        label: Organization
+        widget: string
+        required: false
+      - hint: ''
+        name: f_location
+        label: Location
+        widget: string
+        required: false
+      - hint: ''
+        name: f_picture
+        label: Picture
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_email
+        label: Email
+        widget: string
+        required: false
+      - hint: ''
+        name: f_presentations
+        label: Presentations
+        widget: relation
+        required: false
+        collection: session
+        value_field: cms/session/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_x-profile-link
+        label: X Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_linkedin-profile-link
+        label: LinkedIn Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_bluesky-profile-link
+        label: BlueSky Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_google-scholar-profile-link
+        label: Google Scholar Profile Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_orcid-profile-link
+        label: ORCID Profile Link
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: speakers
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[speakers].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: conference
+    label: Conferences
+    folder: cms/conference
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_start-date-time
+        label: Start Date/Time
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_end-date-time
+        label: End Date/Time
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_location
+        label: Location
+        widget: string
+        required: false
+      - hint: Used on event lists
+        name: f_short-description
+        label: Short Description
+        widget: string
+        required: false
+      - hint: ''
+        name: f_conference-agenda-pdf
+        label: Conference Agenda PDF
+        widget: string
+        required: false
+      - hint: ''
+        name: f_call-to-paper-pdf
+        label: Call to Paper PDF
+        widget: string
+        required: false
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_speaker-registration-url
+        label: Speaker Registration URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_speaker-deadline
+        label: Speaker Deadline
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_attendee-registration-url
+        label: Attendee Registration URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_registration-deadline
+        label: Attendee Deadline
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_sponsor-registration-url
+        label: Sponsor Registration URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_sponsor-deadline
+        label: Sponsor Deadline
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_sessions
+        label: Sessions
+        widget: relation
+        required: true
+        collection: session
+        value_field: cms/session/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_sponsors
+        label: Sponsors
+        widget: relation
+        required: false
+        collection: sponsors
+        value_field: cms/sponsors/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_partners
+        label: Partners
+        widget: relation
+        required: false
+        collection: event_partners
+        value_field: cms/event-partners/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_video-playlist-url
+        label: Video Playlist URL
+        widget: string
+        required: false
+      - hint: ''
+        name: f_conference-photos
+        label: Conference Photos
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: conference
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[conference].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: endorsements
+    label: Endorsements
+    folder: cms/endorsements
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_message
+        label: Message
+        widget: text
+        required: true
+      - hint: ''
+        name: f_image
+        label: Image
+        widget: object
+        required: true
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: true
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_position
+        label: Position
+        widget: string
+        required: true
+      - hint: ''
+        name: f_country
+        label: Country
+        widget: string
+        required: true
+      - hint: ''
+        name: f_featured
+        label: Featured
+        widget: boolean
+        required: false
+        default: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: endorsements
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[endorsements].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: gallery
+    label: Galleries
+    folder: cms/gallery
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_photo
+        label: Photo
+        widget: object
+        required: true
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: true
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_caption
+        label: Caption
+        widget: string
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: gallery
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[gallery].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: About, key: 3c2336d'
+            label: Text
+            name: 3c2336d
+            widget: string
+          - hint: 'Original text: Research, key: -110fda45'
+            label: Text
+            name: '-110fda45'
+            widget: string
+          - hint: 'Original text: Blog, key: 1fa3c2'
+            label: Text
+            name: 1fa3c2
+            widget: string
+          - hint: 'Original text: Podcast, key: 4b0c1ae4'
+            label: Text
+            name: 4b0c1ae4
+            widget: string
+          - hint: 'Original text: Conferences , key: -25922fb7'
+            label: Text
+            name: '-25922fb7'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Contact Us, key: 7f2746de'
+            label: Text
+            name: 7f2746de
+            widget: string
+          - hint: 'Original text: Support Us, key: 523998cf'
+            label: Text
+            name: 523998cf
+            widget: string
+          - hint: >-
+              Original text: Founded in 2011, the Islam & Liberty Network is a
+              global platform dedicated to demonstrating the compatibility of
+              Islam with religious, economic, and political freedoms. Our
+              mission is to foster understanding, promote peaceful dialogue, and
+              empower communities to build prosperous, free societies grounded
+              in universal values. Our work spans conferences, publications, and
+              educational programs across Muslim-majority countries., key:
+              -7c305781
+            label: Text
+            name: '-7c305781'
+            widget: text
+          - hint: 'Original text: Learn More, key: -52bd880f'
+            label: Text
+            name: '-52bd880f'
+            widget: string
+          - hint: 'Original text: From Our Podcast, key: a8fda9a'
+            label: Text
+            name: a8fda9a
+            widget: string
+          - hint: >-
+              Original text: Tune in to our latest podcast episodes exploring
+              the intersection of Islam, liberty and prosperity. Our thought
+              leaders dive into topics like political, economic and religious
+              freedoms, offering fresh perspectives. , key: 5dd7d837
+            label: Text
+            name: 5dd7d837
+            widget: text
+          - hint: 'Original text: Click here to listen now, key: -22373eb6'
+            label: Text
+            name: '-22373eb6'
+            widget: string
+          - hint: 'Original text: ., key: 2e'
+            label: Text
+            name: 2e
+            widget: string
+          - hint: 'Original text: Our Latest Research, key: -29bb2ee0'
+            label: Text
+            name: '-29bb2ee0'
+            widget: string
+          - hint: >-
+              Original text: Join the conversation for freedom in the Muslim
+              world — explore our latest papers and insights today. , key:
+              2a5972fc
+            label: Text
+            name: 2a5972fc
+            widget: text
+          - hint: 'Original text: Click here to read now, key: -3e47c327'
+            label: Text
+            name: '-3e47c327'
+            widget: string
+          - hint: 'Original text: From Our Blog, key: -3ff31034'
+            label: Text
+            name: '-3ff31034'
+            widget: string
+          - hint: >-
+              Original text: Stay informed with our latest insights on freedom
+              and prosperity in Muslim societies through our blog. From
+              reflections on our recent events to thought-provoking articles on
+              Islamic governance, we share ideas that matter. To read more, ,
+              key: -5d261279
+            label: Text
+            name: '-5d261279'
+            widget: text
+          - hint: 'Original text: click here, key: -31cbd078'
+            label: Text
+            name: '-31cbd078'
+            widget: string
+          - hint: 'Original text: Endorsements, key: 7bbe5a25'
+            label: Text
+            name: 7bbe5a25
+            widget: string
+          - hint: 'Original text: Office Address:, key: 225473aa'
+            label: Text
+            name: 225473aa
+            widget: string
+          - hint: >-
+              Original text: Islam & Liberty Network (L) Foundation
+              (Registration No. LAF 00194), key: 974a2e9
+            label: Text
+            name: 974a2e9
+            widget: string
+          - hint: >-
+              Original text: The Lower Penthouse, Wisma Hangsam 1, Jalan Hang
+              Lekir, key: 3bd7e867
+            label: Text
+            name: 3bd7e867
+            widget: string
+          - hint: 'Original text: Kuala Lumpur, key: -144e7483'
+            label: Text
+            name: '-144e7483'
+            widget: string
+          - hint: 'Original text: Malaysia, 50000, key: -3fb8bafa'
+            label: Text
+            name: '-3fb8bafa'
+            widget: string
+          - hint: 'Original text: Email Address: , key: -faf15aa'
+            label: Text
+            name: '-faf15aa'
+            widget: string
+          - hint: 'Original text: info@islamandlibertynetwork.org, key: 36aa7c48'
+            label: Text
+            name: 36aa7c48
+            widget: string
+          - hint: 'Original text: Our Partners, key: 8531b3f'
+            label: Text
+            name: 8531b3f
+            widget: string
+          - hint: >-
+              Original text: Copyright © 2010- 2022 Islam and Liberty Network.
+              All Rights Reserved. Built with ❤️ and 🤲 by, key: -58112d
+            label: Text
+            name: '-58112d'
+            widget: text
+          - hint: 'Original text:  Adnan Abbasi, key: -38aafe22'
+            label: Text
+            name: '-38aafe22'
+            widget: string
+          - hint: 'Original text: Sponsored by, key: -59d8df42'
+            label: Text
+            name: '-59d8df42'
+            widget: string
+          - hint: 'Original text: Sessions, key: 579a34bd'
+            label: Text
+            name: 579a34bd
+            widget: string
+          - hint: >-
+              Original text: To watch the full conference playlist, click this
+              button., key: -7b55b5d0
+            label: Text
+            name: '-7b55b5d0'
+            widget: string
+          - hint: 'Original text: Speakers, key: -7b61fb8c'
+            label: Text
+            name: '-7b61fb8c'
+            widget: string
+          - hint: 'Original text: Chair, key: 3e0e6a5'
+            label: Text
+            name: 3e0e6a5
+            widget: string
+          - hint: 'Original text: Who We Are?, key: -3a25c005'
+            label: Text
+            name: '-3a25c005'
+            widget: string
+          - hint: >-
+              Original text: Islam and Liberty Network (L) Foundation is legally
+              organised as a non-profit Labuan foundation registered in Malaysia
+              and is governed by an international board of directors, all of
+              whom except for the part-time CEO give their time freely. Founded
+              in 2011, it is a platform for researchers, academics and public
+              intellectuals to explore and promote a Muslim case for religious,
+              economic and political freedom by disseminating knowledge and
+              developing human resources. We are funded by like minded
+              foundations and individuals., key: -5526054d
+            label: Text
+            name: '-5526054d'
+            widget: text
+          - hint: 'Original text: Mission and Theme, key: -a08394'
+            label: Text
+            name: '-a08394'
+            widget: string
+          - hint: >-
+              Original text: The Islam & Liberty Network exists to explore and
+              promote a Muslim case for freedom. We consider the words freedom
+              and liberty to be interchangeable., key: 48aa9787
+            label: Text
+            name: 48aa9787
+            widget: text
+          - hint: 'Original text: By freedom, we mean:, key: 7740d724'
+            label: Text
+            name: 7740d724
+            widget: string
+          - hint: 'Original text: 1. Religious freedom, key: 486ef0e'
+            label: Text
+            name: 486ef0e
+            widget: string
+          - hint: 'Original text: 2. Political freedom, key: 18dac82f'
+            label: Text
+            name: 18dac82f
+            widget: string
+          - hint: 'Original text: 3. Economic freedom, key: 742b7d70'
+            label: Text
+            name: 742b7d70
+            widget: string
+          - hint: >-
+              Original text: Our mission is to apply serious intellectual
+              efforts to demonstrate that Islam and a free society are
+              compatible. Poor quality thinking can only be changed by better
+              thinking. We promote change with our annual programme which
+              includes an international conference, a regional residential
+              workshop, opinion articles, and podcasts., key: -3ca1b8b
+            label: Text
+            name: '-3ca1b8b'
+            widget: text
+          - hint: 'Original text: ILN Journey Through Time, key: -2b08d683'
+            label: Text
+            name: '-2b08d683'
+            widget: string
+          - hint: 'Original text: People, key: -71b8e151'
+            label: Text
+            name: '-71b8e151'
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: /, key: 2f'
+            label: Link
+            name: 2f
+            widget: string
+          - hint: 'Original link: /about-us/, key: -766f6c3e'
+            label: Link
+            name: '-766f6c3e'
+            widget: string
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: >-
+              Original link:
+              https://substack.com/profile/210112248-islam-liberty-network/posts,
+              key: 6b4ccd1a
+            label: Link
+            name: 6b4ccd1a
+            widget: string
+          - hint: 'Original link: /podcast/, key: 4b2d3eda'
+            label: Link
+            name: 4b2d3eda
+            widget: string
+          - hint: 'Original link: /contact-us/, key: 6bfbaa95'
+            label: Link
+            name: 6bfbaa95
+            widget: string
+          - hint: 'Original link: /support-us/, key: -4cc693c'
+            label: Link
+            name: '-4cc693c'
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/islamandlibertynetwork/,
+              key: -65fccd21
+            label: Link
+            name: '-65fccd21'
+            widget: string
+          - hint: >-
+              Original link: https://www.youtube.com/@IslamandLibertyNetwork,
+              key: 7a358481
+            label: Link
+            name: 7a358481
+            widget: string
+          - hint: >-
+              Original link: https://www.facebook.com/islamandlibertynetwork/,
+              key: -eed4d41
+            label: Link
+            name: '-eed4d41'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.linkedin.com/company/islam-and-liberty-network/, key:
+              -424f642a
+            label: Link
+            name: '-424f642a'
+            widget: string
+          - hint: >-
+              Original link: mailto:info@islamandlibertynetwork.org, key:
+              48ab2f40
+            label: Link
+            name: 48ab2f40
+            widget: string
+          - hint: 'Original link: https://www.atlasnetwork.org/, key: 537e5990'
+            label: Link
+            name: '537e5990'
+            widget: string
+          - hint: 'Original link: https://csss-isla.com/, key: 2421d0f'
+            label: Link
+            name: 2421d0f
+            widget: string
+          - hint: 'Original link: https://csid-online.org/, key: -21cb4fed'
+            label: Link
+            name: '-21cb4fed'
+            widget: string
+          - hint: 'Original link: https://www.nu.or.id/, key: -6ab05416'
+            label: Link
+            name: '-6ab05416'
+            widget: string
+          - hint: 'Original link: https://www.gptt.ir/, key: 5272b4a7'
+            label: Link
+            name: 5272b4a7
+            widget: string
+          - hint: 'Original link: https://iais.org.my/, key: 5b57fc9c'
+            label: Link
+            name: 5b57fc9c
+            widget: string
+          - hint: 'Original link: https://www.iiird.org.pk/, key: 31c934d1'
+            label: Link
+            name: 31c934d1
+            widget: string
+          - hint: >-
+              Original link: https://religiousfreedominstitute.org/, key:
+              314d6a0e
+            label: Link
+            name: 314d6a0e
+            widget: string
+          - hint: 'Original link: https://studentsforliberty.org/mena/, key: -c1235a0'
+            label: Link
+            name: '-c1235a0'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.linkedin.com/in/adnan-abbasi-bb659a116/, key:
+              -29e7fb10
+            label: Link
+            name: '-29e7fb10'
+            widget: string
+          - hint: >-
+              Original link: https://eye-zikr.replit.app/team-page.html, key:
+              -41623d71
+            label: Link
+            name: '-41623d71'
+            widget: string
+          - hint: >-
+              Original link: mailto:ali@islamandlibertynetwork.org, key:
+              1f85df60
+            label: Link
+            name: 1f85df60
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: 7ddeb2ae
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3b1928a4'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '0'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 674c528
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 55cbfad9
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-3cbca8bd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 67c44f88
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 65a4358
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-101b37c9'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-431b5eea'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-61586a38'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow
