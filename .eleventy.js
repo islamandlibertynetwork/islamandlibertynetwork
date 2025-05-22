@@ -6,6 +6,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets/fonts");
   eleventyConfig.addPassthroughCopy("assets/external");
   
+  // Add passthrough copy for admin CMS interface
+  eleventyConfig.addPassthroughCopy("admin");
+  
   // Add the missing dateLastMod filter
   eleventyConfig.addFilter("dateLastMod", function(dateObj) {
     if (!dateObj) {
@@ -65,7 +68,7 @@ module.exports = function(eleventyConfig) {
     dir: {
       input: ".",
       includes: "_includes",
-      data: "cms/_data",  // ← Changed this line!
+      data: "cms/_data",
       output: "public"
     }
   };
