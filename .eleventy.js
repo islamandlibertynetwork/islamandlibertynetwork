@@ -1,6 +1,10 @@
 module.exports = function(eleventyConfig) {
-  // Add passthrough copy for assets
-  eleventyConfig.addPassthroughCopy("assets");
+  // Add passthrough copy for all assets subfolders
+  eleventyConfig.addPassthroughCopy("assets/css");
+  eleventyConfig.addPassthroughCopy("assets/js");
+  eleventyConfig.addPassthroughCopy("assets/images");
+  eleventyConfig.addPassthroughCopy("assets/fonts");
+  eleventyConfig.addPassthroughCopy("assets/external");
   
   // Add the missing dateLastMod filter
   eleventyConfig.addFilter("dateLastMod", function(dateObj) {
