@@ -42,6 +42,18 @@ module.exports = function(eleventyConfig) {
     return reference;
   });
 
+  // Add the missing markdown filter
+  eleventyConfig.addFilter("markdown", function(content) {
+    // If no content, return empty string
+    if (!content) {
+      return "";
+    }
+    
+    // For now, return content as-is (HTML safe)
+    // You might want to add actual markdown processing here later
+    return content;
+  });
+
   // Your existing configuration...
   
   return {
