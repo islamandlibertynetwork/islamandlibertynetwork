@@ -65,7 +65,7 @@ module.exports = function(eleventyConfig) {
     dir: {
       input: ".",
       includes: "_includes",
-      data: "_data",
+      data: "cms/_data",  // ← Changed this line!
       output: "public"
     }
   };
