@@ -1,4 +1,7 @@
 module.exports = function(eleventyConfig) {
+  // Add passthrough copy for assets
+  eleventyConfig.addPassthroughCopy("assets");
+  
   // Add the missing dateLastMod filter
   eleventyConfig.addFilter("dateLastMod", function(dateObj) {
     if (!dateObj) {
@@ -54,8 +57,6 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
-  // Your existing configuration...
-  
   return {
     dir: {
       input: ".",
