@@ -1296,7 +1296,7 @@ collections:
             widget: string
           - hint: >-
               Original link:
-              https://substack.com/profile/210112248-islam-liberty-network/posts,
+              https://blog.islamandlibertynetwork.org,
               key: 6b4ccd1a
             label: Link
             name: 6b4ccd1a
