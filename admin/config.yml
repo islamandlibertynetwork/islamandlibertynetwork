@@ -3,8 +3,8 @@ backend:
   accept_roles:
     - admin
     - editor
-  branch: master
-media_folder: theme/assets/images
+  branch: main  # Changed from master to main
+media_folder: assets/images  # Fixed path from theme/assets/images
 public_folder: /assets/images
 collections:
   - name: pages
