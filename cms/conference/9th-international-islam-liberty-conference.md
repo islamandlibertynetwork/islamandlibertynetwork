@@ -9,7 +9,7 @@ f_location: Mardin, Türkiye
 f_short-description: The Future of Democracy, Peace & Economic Progress in Muslim-Majority Nations
 f_conference-agenda-pdf: https://islamandlibertynetwork.org/wp-content/uploads/2022/10/Poster-Program-1-ENG-1_removed.pdf
 f_image:
-  url: /assets/images/137-1-1536x569.jpg
+  url: https://media.cnn.com/api/v1/images/stellar/prod/220505103029-09-mardin-castle-mardin-turkey.jpg?c=original
 f_speaker-deadline: ""
 f_registration-deadline: ""
 f_sponsor-deadline: ""
