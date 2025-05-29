@@ -8,6 +8,7 @@ f_end-date-time: 2022-10-28T12:00:07.327Z
 f_location: Mardin, Türkiye
 f_short-description: The Future of Democracy, Peace & Economic Progress in Muslim-Majority Nations
 f_conference-agenda-pdf: https://islamandlibertynetwork.org/wp-content/uploads/2022/10/Poster-Program-1-ENG-1_removed.pdf
+f_call-to-paper-pdf: https://islamandlibertynetwork.org/wp-content/uploads/2022/06/Call-for-Papers_ILN-9th-Conference-vf2-converti.pdf
 f_image:
   url: https://media.cnn.com/api/v1/images/stellar/prod/220505103029-09-mardin-castle-mardin-turkey.jpg?c=original
 f_speaker-deadline: ""
@@ -18,7 +19,10 @@ f_sessions:
 f_sponsors:
   - cms/sponsors/atlas-network.md
   - cms/sponsors/network-for-a-free-society.md
-f_partners: []
+f_partners:
+  - cms/event-partners/acton-insitute.md
+  - cms/event-partners/mardin-artuklu-university.md
+  - cms/event-partners/liberal-düşünce-topluluğu.md
 tags: conference
 layout: "[conference].html"
 date: 2025-05-29T06:50:07.405Z
