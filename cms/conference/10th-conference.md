@@ -1,5 +1,5 @@
 ---
-title: 10th Conference
+title: 10th International Islam & Liberty Conference
 created-on: 2025-03-29T06:55:46.359Z
 updated-on: 2025-03-31T09:10:28.818Z
 published-on: 2025-03-31T09:10:58.447Z
@@ -12,12 +12,12 @@ f_call-to-paper-pdf: ""
 f_image:
   url: /assets/external/67e92f2f0345883f8ca4ccb4_1200px-kuala_lumpur_skyline_at_dusk_1.jpg
   alt: null
-f_speaker-registration-url: http://google.com
-f_speaker-deadline: 2023-09-03T00:00:00.000Z
-f_attendee-registration-url: http://google.com
-f_registration-deadline: 2023-09-03T00:00:00.000Z
-f_sponsor-registration-url: http://google.com
-f_sponsor-deadline: 2023-09-03T00:00:00.000Z
+f_speaker-registration-url: ""
+f_speaker-deadline: ""
+f_attendee-registration-url: ""
+f_registration-deadline: ""
+f_sponsor-registration-url: ""
+f_sponsor-deadline: ""
 f_sessions:
   - cms/session/opening-remarks.md
   - cms/session/session-1-democracy-civil-society.md
