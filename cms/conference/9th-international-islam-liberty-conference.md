@@ -10,9 +10,9 @@ f_short-description: The Future of Democracy, Peace & Economic Progress in Musli
 f_conference-agenda-pdf: https://islamandlibertynetwork.org/wp-content/uploads/2022/10/Poster-Program-1-ENG-1_removed.pdf
 f_image:
   url: /assets/images/137-1-1536x569.jpg
-f_speaker-deadline: 2025-05-29T06:51:00.000Z
-f_registration-deadline: 2025-05-29T06:50:07.368Z
-f_sponsor-deadline: 2025-05-29T06:50:07.384Z
+f_speaker-deadline: ""
+f_registration-deadline: ""
+f_sponsor-deadline: ""
 f_sessions:
   - cms/session/opening-remarks.md
 f_sponsors:
